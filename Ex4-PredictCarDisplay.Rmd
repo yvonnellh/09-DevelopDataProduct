@@ -1,0 +1,47 @@
+---
+title: "Develop Data Product - Predict Car Display"
+author: "Yvonne"
+date: "May 4, 2017"
+output: slidy_presentation
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## Develop Data Product - Week 4 Assignment
+
+As part of the requirement of the Module 9 (Develop Data Product), it's required to develop a Shiny web application and to present a pitch.
+
+- The shiny web application has been generated using RStudio(https://www.rstudio.com) and Shiny.io(https://www.shinyapps.io/).
+
+- A  presentation was also created to describe what is being done in the Shiny web application. The presentation was generated using RStudio(https://www.rstudio.com) and Slidify(http://slidify.org) framework.
+
+## Shiny Web Appliction - Predicting Display using Horsepower
+
+The Shiny web application was developed to predict the Display of a car by using its horsepower. The app is shared here: https://yvonneleong.shinyapps.io/Week4_Project/. 
+
+
+- In the application, a prediction model is generated, based on a car dataset (mtcars) which consists of parameters like Horsepower, Display, Miles Per Gallon, etc. 
+- Then, user can select the horsepower in order to predict the Display of the car.  
+- The 'point' showing the predicted Display will be shown on the plot and the figure for the Display will be shown at below the plot.
+
+The application and the current presentation source codes can be found here https://github.com/yvonnellh/09-DevelopDataProduct.
+
+
+## Datasets Used in Prediction Model
+
+```{r, echo=TRUE}
+summary(mtcars)
+```
+
+## Prediction Plot for Display Vs Horsepower
+
+```{r, echo=TRUE}
+model1 <- lm(disp ~ hp, data = mtcars)
+plot(mtcars$hp, mtcars$disp, xlab = "Horsepower",
+         ylab = "Display", bty = "n", pch = 16,
+         xlim = c(0, 350), ylim = c(0, 600))
+abline(model1, col = "red", lwd = 2)
+```
+
